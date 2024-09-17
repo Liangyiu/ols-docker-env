@@ -14,8 +14,6 @@ services:
   litespeed:
     image: litespeedtech/openlitespeed:${OLS_VERSION}-${PHP_VERSION}
     container_name: litespeed
-    env_file:
-      - .env
     volumes:
       - ./lsws/conf:/usr/local/lsws/conf
       - ./lsws/admin-conf:/usr/local/lsws/admin/conf
@@ -28,6 +26,10 @@ services:
       TZ: ${TZ}
       OLS_VERSION: ${OLS_VERSION}
       PHP_VERSION: ${PHP_VERSION}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       
   phpmyadmin:
     image: bitnami/phpmyadmin:5.2.0-debian-11-r43
